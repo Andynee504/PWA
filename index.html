@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<!-- doctype informa o agente de usuário a versão do html que deve ser renderizada -->
+<html lang="pt-br" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="author" content="">
+  <meta name= "content" content="">
+  <meta name="keywords" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projeto Final Módulo 5</title>
+  <link rel="manifest" href="manifest.json">
+  <!--<link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/icomoon/style.css">-->
+  <link rel="stylesheet" href="css/master.css">
+</head>
+
+
+
+<body>
+
+
+
+  <header>
+    <h1><img src="imagem/Sem título-1.svg" alt="" class="icon-logo"><img src="imagem/Sem título-2.svg" alt="" class="icon-logo2">LaserSound</h1>
+  </header>
+
+
+
+  <nav>
+
+    <input type="button" value="Set the instrument >" class="set-instrument">
+
+    <input type="checkbox" id="btn-REC" /*onclick="recCheck()"*/ />
+    <label for="btn-REC" id="btn-REC-label">REC</label>
+    <input type="checkbox" id="btn-shift" /*onclick="checktx()"*/ />
+    <label for="btn-shift" id="btn-shift-label">shift</label>
+
+    <form>
+      <div class="slidecontainer">
+        <p>Volume: <span id="demo-volume"></span></p>
+        <input type="range" min="1" max="100" value="50" class="slider" id="volume">
+      </div>
+
+      <div class="slidecontainer">
+        <p>Delay: <span id="demo-delay"></span></p>
+        <input type="range" min="1" max="100" value="50" class="slider" id="delay">
+      </div>
+    </form>
+
+  </nav>
+
+  <div class="btn-main">
+
+    <input type="button" class="btn-main-link">
+
+    <input type="button" class="btn-main-link">
+
+    <input type="button" class="btn-main-link">
+
+    <input type="button" class="btn-main-link">
+
+  </div>
+
+  
+
+  <script>
+    var delaySlider = document.getElementById("delay");
+    var delayOutput = document.getElementById("demo-delay");
+  
+    var volumeSlider = document.getElementById("volume");
+    var volumeOutput = document.getElementById("demo-volume");
+  
+    delayOutput.innerHTML = delaySlider.value;
+    delaySlider.oninput = function() {
+      delayOutput.innerHTML = this.value;
+    }
+  
+    volumeOutput.innerHTML = volumeSlider.value;
+    volumeSlider.oninput = function() {
+      volumeOutput.innerHTML = this.value;
+    }
+  </script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/service-worker.js')
+    }
+  </script>
+
+  <script>
+    document.getElementById("btn-REC-label").onclick = function() {recCheck()};
+    function recCheck() {
+    document.getElementById("btn-REC-label").classList.toggle("btn-REC-animation");
+    }
+  </script>
+
+<script>
+  document.getElementById("btn-shift-label").onclick = function() {shiftCheck()};
+  function shiftCheck() {
+  document.getElementById("btn-shift-label").classList.toggle("btn-shift-animation");
+  }
+</script>
+
+  <!--<script>
+
+    // Start/Stop button operations
+    function checkt(){
+    var time = 0;
+    var start = false;
+    var interval;
+    var recordedTime = '';
+    var startBtn = document.getElementById('btn-REC');
+    var timer = document.getElementById('timer');
+      if(startBtn.checked==true){
+        
+          interval = setInterval( function() {
+            //console.log(time);
+            if(parseInt(time)==10){
+              document.getElementById('timer').style.color='#000';
+            }
+            if(parseInt(time)==20){
+              clearInterval(interval);
+              document.getElementById('btn').checked=false;
+              document.getElementById('timer').value=0;
+              document.getElementById('timer').style.color='#fff';
+            }
+            time += 1/100;
+            timer.innerHTML = time.toFixed(2);
+          },10);
+          start = !start;
+        //alert('sdfsd');
+      }
+      else {
+            clearInterval(interval);
+            start = !start;
+          //alert('sdfsdfgdfgdgfd');
+          }
+    }
+
+  </script>-->
+
+
+
+</body>
